@@ -10,12 +10,18 @@ import {
   getKm,
   getTemp,
   reformTitle,
+  upperCaseFirtsLetter,
 } from "../helpers/helpers";
 import Loader from "./Loader";
+import Welcome from "./Welcome";
 
-const WeatherCard = ({ showData, loadingData, weatherInfo }) => {
+const WeatherCard = ({
+  loadingData,
+  weatherInfo,
+  showData,
+  getWeatherLocation,
+}) => {
   if (loadingData) {
-      
     return <Loader />;
   }
   return (
@@ -26,21 +32,30 @@ const WeatherCard = ({ showData, loadingData, weatherInfo }) => {
           <Row className="mt-5">
             <Col>
               <div className="d-flex flex-column">
-                <h1>{reformTitle(weatherInfo?.timezone)} </h1>
-                <h2>{getCurrentlyDate(weatherInfo?.current?.dt)}</h2>
+                <h1>{reformTitle(weatherInfo?.timezone)}</h1>
+                <h5>{getCurrentlyDate(weatherInfo?.current?.dt)}</h5>
                 <div className="d-flex align-items-center justify-content-center">
                   <img
                     src={`https://openweathermap.org/img/wn/${weatherInfo?.current?.weather[0]?.icon}@2x.png`}
                     alt="icon-weather"
                   />
-                  <h2>{getTemp(weatherInfo?.current?.temp).toFixed(0)}°C</h2>
+                  <div className="d-flex flex-column">
+                    <h2 className="display-3">
+                      {getTemp(weatherInfo?.current?.temp).toFixed(0)}°C
+                    </h2>
+                    <h6>
+                      {upperCaseFirtsLetter(
+                        weatherInfo?.current?.weather[0]?.description
+                      )}
+                    </h6>
+                  </div>
                 </div>
               </div>
             </Col>
             <Col>
               <Row>
                 <Col>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between mt-4">
                     <div className="d-flex flex-column align-items-center">
                       <label>
                         {getTemp(weatherInfo?.daily[0]?.temp?.max).toFixed(0)}°C
@@ -89,7 +104,8 @@ const WeatherCard = ({ showData, loadingData, weatherInfo }) => {
           </Row>
           <Row className="mt-5">
             <Col>
-              <div className="d-flex pb-4 container-weather-hours">
+              <label className="h5">El tiempo hoy</label>
+              <div className="d-flex mt-2 pb-4 container-weather-hours">
                 {weatherInfo?.hourly
                   ?.filter(
                     (item) =>
@@ -104,9 +120,7 @@ const WeatherCard = ({ showData, loadingData, weatherInfo }) => {
                           alt="icono clima"
                         />
 
-                        <label>
-                          {getTemp(item?.temp).toFixed(0)}°C
-                        </label>
+                        <label>{getTemp(item?.temp).toFixed(0)}°C</label>
                       </div>
                     </div>
                   ))}
@@ -115,7 +129,8 @@ const WeatherCard = ({ showData, loadingData, weatherInfo }) => {
           </Row>
           <Row className="mt-5">
             <Col>
-              <div>
+              <label className="h5">Próximos 5 días</label>
+              <div className="mt-2">
                 {weatherInfo?.daily?.slice(1, 6).map((item, i) => (
                   <div
                     className="d-flex justify-content-between align-items-center"
@@ -134,11 +149,11 @@ const WeatherCard = ({ showData, loadingData, weatherInfo }) => {
                       />
                     </div>
                     <div className="d-flex flex-column align-items-center">
-                      <label>{getTemp(item.temp.min).toFixed(0)}° </label>
+                      <label>{getTemp(item.temp.min).toFixed(0)}°C </label>
                       <label>Min</label>
                     </div>
                     <div className="d-flex flex-column align-items-center">
-                      <label>{getTemp(item.temp.max).toFixed(0)}°</label>
+                      <label>{getTemp(item.temp.max).toFixed(0)}°C</label>
                       <label>Max</label>
                     </div>
                     <div className="d-flex flex-column align-items-center">
@@ -156,7 +171,7 @@ const WeatherCard = ({ showData, loadingData, weatherInfo }) => {
           </Row>{" "}
         </>
       ) : (
-        <h2>Seleccione una ciudad</h2>
+        <Welcome getWeatherLocation={getWeatherLocation} />
       )}
     </Container>
   );
