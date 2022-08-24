@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Container } from "reactstrap";
 import { getApiUrl } from "../config/configUrl";
 import CitySelector from "./CitySelector";
@@ -17,7 +17,6 @@ const WeatherPanel = () => {
         return response.json();
       })
       .then((weatherData) => {
-        console.log(weatherData);
         setWeatherInfo(weatherData);
         setLoading(false);
         setShowInfo(true);
@@ -25,7 +24,7 @@ const WeatherPanel = () => {
       .catch((err) => {
         setLoading(false);
         setShowInfo(false);
-        console.log(err);
+        alert(err);
       });
   };
 
@@ -36,6 +35,7 @@ const WeatherPanel = () => {
         loadingData={loading}
         showData={showInfo}
         weatherInfo={weatherInfo}
+        getWeatherLocation={getWeatherLocation}
       />
     </Container>
   );
