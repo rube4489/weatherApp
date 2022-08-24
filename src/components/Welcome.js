@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Spinner } from "reactstrap";
 import { getLocation } from "../helpers/helpers";
+import PropTypes from "prop-types";
 
 const Welcome = ({ getWeatherLocation }) => {
   const [loading, setLoading] = useState(false);
@@ -62,3 +63,7 @@ const Welcome = ({ getWeatherLocation }) => {
 };
 
 export default Welcome;
+
+Welcome.prototype = {
+  getWeatherLocation: PropTypes.func.isRequired,
+};

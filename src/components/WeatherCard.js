@@ -14,6 +14,7 @@ import {
 } from "../helpers/helpers";
 import Loader from "./Loader";
 import Welcome from "./Welcome";
+import PropTypes from "prop-types";
 
 const WeatherCard = ({
   loadingData,
@@ -178,3 +179,10 @@ const WeatherCard = ({
 };
 
 export default WeatherCard;
+
+WeatherCard.prototype = {
+  loadingData: PropTypes.bool.isRequired,
+  weatherInfo: PropTypes.object.isRequired,
+  showData: PropTypes.bool.isRequired,
+  getWeatherLocation: PropTypes.func.isRequired,
+};

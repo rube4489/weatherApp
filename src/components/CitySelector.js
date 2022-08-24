@@ -1,6 +1,7 @@
 import React from "react";
 import { Input } from "reactstrap";
 import { citiesList } from "../citiesList/citiesList";
+import PropTypes from "prop-types";
 
 const CitySelector = ({ getWeatherLocation }) => {
   const handleCity = (e) => {
@@ -31,3 +32,7 @@ const CitySelector = ({ getWeatherLocation }) => {
 };
 
 export default CitySelector;
+
+CitySelector.prototype = {
+  getWeatherLocation: PropTypes.func.isRequired,
+};
