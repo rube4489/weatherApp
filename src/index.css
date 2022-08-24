@@ -1,10 +1,23 @@
+html {
+  height: 100vh;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  color: #fff !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: rgb(42, 34, 195);
+  background: linear-gradient(
+    180deg,
+    rgba(42, 34, 195, 1) 0%,
+    rgba(66, 68, 69, 1) 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: auto;
 }
 
 code {
@@ -25,7 +38,7 @@ code {
 }
 
 .container-weather-hours::-webkit-scrollbar-thumb {
-  box-shadow: inset 0 0 6px #000;
+  box-shadow: inset 0 0 6px #fff;
   border-radius: 0.25em;
 }
 .wrapper-loader {
@@ -37,4 +50,14 @@ code {
 .size-loader {
   height: 3rem !important;
   width: 3rem !important;
+}
+.size-select {
+  width: 250px !important;
+}
+
+@media (max-width: 550px) {
+  .size-loader {
+    height: 2rem !important;
+    width: 2rem !important;
+  }
 }
