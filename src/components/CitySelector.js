@@ -10,13 +10,13 @@ const CitySelector = ({ getWeatherLocation }) => {
     getWeatherLocation(citySelected.lat, citySelected.long);
   };
   return (
-    <div className="d-flex justify-content-end mt-2">
+    <div className="d-flex justify-content-sm-center justify-content-lg-end mt-2 mb-4">
       <Input
         onChange={(e) => handleCity(e)}
         id="exampleSelect"
         name="select"
         type="select"
-        className="w-25"
+        className="size-select"
         defaultValue={"default"}
       >
         <option value="default" disabled>
