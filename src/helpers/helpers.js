@@ -100,3 +100,24 @@ export const getCurrentlyDate = (date) => {
 
   return `${dayName}, ${numberDay} de ${month}`;
 };
+
+//Obtengo coordenadas
+export const getLocation = (setCurrentlyLocation, setErrorCode) => {
+  if ("geolocation" in navigator) {
+    function getPosition(position) {
+      setCurrentlyLocation({
+        lat: position.coords.latitude,
+        long: position.coords.longitude,
+      });
+      console.log(position);
+    }
+    function getError(err) {
+      setErrorCode(err.code);
+    }
+    const options = {
+      enableHighAccuracy: true, // Alta precisión
+      maximumAge: 0, // Elimino caché
+    };
+    navigator.geolocation.getCurrentPosition(getPosition, getError, options);
+  }
+};
