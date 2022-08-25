@@ -25,7 +25,7 @@ const Welcome = ({ getWeatherLocation }) => {
       <h2>¡Bienvenido!</h2>
       <p className="mt-4">
         {errorCode !== 1 ? (
-          "Puedes consultar el pronostico del clima de tu ubicación actual permitiendo el acceso o también puedes consultar entre 5 ciudades a través del selector."
+          "Puedes consultar el pronóstico del clima de tu ubicación actual permitiendo el acceso o también puedes consultar entre 5 ciudades a través del selector."
         ) : (
           <>
             El acceso a tu ubicación actual se encuentra denegado, puedes elegir
