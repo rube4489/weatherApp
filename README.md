@@ -51,7 +51,7 @@ Ingresar variable de entorno
 
 REACT_APP_API_KEY=AQUI_TU_KEY_DE_OPENWEATHERMAP
 
-Nota.- En caso de no contar con una apikey, podrá generarla de manera gratuita en https://openweathermap.org/
+### Nota.- En caso de no contar con una apikey, podrá generarla de manera gratuita en https://openweathermap.org/
 
 #### NPM
 
