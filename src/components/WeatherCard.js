@@ -149,19 +149,19 @@ const WeatherCard = ({
                         alt="icono clima"
                       />
                     </div>
-                    <div className="d-flex flex-column align-items-center m-sm-0 m-1">
+                    <div className="d-flex flex-column align-items-center me-sm-1 me-1">
                       <label>{getTemp(item.temp.min).toFixed(0)}°C </label>
                       <label>Min</label>
                     </div>
-                    <div className="d-flex flex-column align-items-center m-sm-0 m-1">
+                    <div className="d-flex flex-column align-items-center me-sm-1 me-1">
                       <label>{getTemp(item.temp.max).toFixed(0)}°C</label>
                       <label>Max</label>
                     </div>
-                    <div className="d-flex flex-column align-items-center m-sm-0 m-1">
+                    <div className="d-flex flex-column align-items-center me-sm-1 me-1">
                       <label>{item.humidity}%</label>
                       <label>Humedad</label>
                     </div>
-                    <div className="d-flex flex-column align-items-center m-sm-0 m-1">
+                    <div className="d-flex flex-column align-items-center">
                       <label>{getKm(item.wind_speed).toFixed(0)}</label>
                       <label>Km/h</label>
                     </div>
